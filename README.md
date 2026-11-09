@@ -34,3 +34,9 @@ Open `index.html` in a modern browser or run `node test.mjs` with Node.js 20+. T
 ## Scope
 
 Dry-run simulator. It produces proposed block decisions without changing a firewall.
+
+## What this demonstrates
+
+**Show how response automation protects legitimate traffic.** Check that an allowlist overrides an otherwise eligible indicator and that duplicate entries yield a single decision. The lab records proposals and does not touch live firewall rules.
+
+[Reference guidance](https://csrc.nist.gov/pubs/sp/800/61/r3/final)

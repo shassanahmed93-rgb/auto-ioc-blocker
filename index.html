@@ -21,7 +21,7 @@
       &quot;sources&quot;: 1
     }
   ]
-}</textarea><div class="actions"><button id="run">Run lab</button><button class="secondary" id="reset">Reset fixture</button></div></div><div class="card"><h2>Evidence output</h2><pre id="output" aria-live="polite"></pre><div class="actions"><button class="secondary" id="save">Download JSON</button></div></div></section></main><script>
+}</textarea><div class="actions"><button id="run">Run lab</button><button class="secondary" id="reset">Reset fixture</button><button class="secondary" id="compare">Load comparison</button></div></div><div class="card"><h2>Evidence output</h2><pre id="output" aria-live="polite"></pre><div class="actions"><button class="secondary" id="save">Download JSON</button></div></div></section><section class="card" style="margin-top:18px"><p class="tag">What this demonstrates</p><h2>Show how response automation protects legitimate traffic</h2><p>Check that an allowlist overrides an otherwise eligible indicator and that duplicate entries yield a single decision. The lab records proposals and does not touch live firewall rules.</p><a href="https://csrc.nist.gov/pubs/sp/800/61/r3/final">Reference guidance</a></section></main><script>
 "use strict";
 function analyze(input) {
   const protectedIps = new Set(input.allowlist);
@@ -52,6 +52,7 @@ function run() {
   document.getElementById("save").disabled = report === undefined;
 }
 document.getElementById("run").onclick = run;
+document.getElementById("compare").onclick = () => { input.value = "{\n  \"allowlist\": [\n    \"192.0.2.5\"\n  ],\n  \"indicators\": [\n    {\n      \"ip\": \"192.0.2.5\",\n      \"confidence\": 99,\n      \"sources\": 4\n    },\n    {\n      \"ip\": \"192.0.2.5\",\n      \"confidence\": 99,\n      \"sources\": 4\n    },\n    {\n      \"ip\": \"999.0.0.1\",\n      \"confidence\": 99,\n      \"sources\": 4\n    }\n  ]\n}"; run(); };
 document.getElementById("reset").onclick = () => { input.value = fixture; run(); };
 document.getElementById("save").onclick = () => {
   if (report === undefined) return;
