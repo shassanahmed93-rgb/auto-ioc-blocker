@@ -1,0 +1,22 @@
+{
+  "allowlist": [
+    "192.0.2.5"
+  ],
+  "indicators": [
+    {
+      "ip": "192.0.2.5",
+      "confidence": 99,
+      "sources": 3
+    },
+    {
+      "ip": "203.0.113.25",
+      "confidence": 95,
+      "sources": 2
+    },
+    {
+      "ip": "198.51.100.4",
+      "confidence": 51,
+      "sources": 1
+    }
+  ]
+}
